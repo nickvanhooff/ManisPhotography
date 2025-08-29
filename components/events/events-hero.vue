@@ -2,7 +2,7 @@
   <section class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0 bg-black/30">
       <img
-        src="@/assets/images/Branding/manisdefretes_sep(28).jpg"
+        src="/images/events/TheConflict/TheconflictManïsPhotography(7).avif"
         alt="Event fotografie"
         class="w-full h-full object-cover object-center"
         width="1920"
