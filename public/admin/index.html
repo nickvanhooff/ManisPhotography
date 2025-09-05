@@ -14,6 +14,7 @@
       CMS.init({
         config: {
           load_config_file: false,
+          config_file: null,
           backend: {
             name: 'git-gateway',
             branch: 'main'
@@ -23,6 +24,7 @@
           site_url: 'https://manis-photography.vercel.app',
           display_url: 'https://manis-photography.vercel.app',
           local_backend: true,
+          publish_mode: 'simple',
           collections: [
             {
               name: 'portfolio',
