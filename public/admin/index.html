@@ -6,6 +6,8 @@
     <title>Content Manager</title>
     <!-- Include the script that enables Netlify Identity on this page. -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <!-- Specify the config file location -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
   </head>
   <body>
     <!-- Root element for Decap CMS -->
@@ -21,7 +23,7 @@
         setTimeout(function() {
           if (window.CMS) {
             console.log('Initializing Decap CMS...');
-            // CMS will auto-initialize with config.yml
+            // CMS will auto-initialize with config.yml from the link tag
           } else {
             console.error('Decap CMS not loaded');
           }
