@@ -3,10 +3,38 @@ interface PortfolioImage {
   alt: string
   title: string
   category: string
+  description?: string
+  featured?: boolean
+  order?: number
+}
+
+interface PortfolioItem {
+  title: string
+  category: string
+  featured: boolean
+  order: number
+  image: string
+  alt: string
+  description?: string
 }
 
 export function usePortfolioImages() {
+  // Function to get portfolio items from CMS
+  const getPortfolioItems = async (): Promise<PortfolioItem[]> => {
+    try {
+      // In development, we'll use the static files
+      // In production, this could be replaced with a fetch to your CMS API
+      const { data } = await $fetch('/api/portfolio')
+      return data || []
+    } catch (error) {
+      console.warn('Failed to fetch portfolio from CMS, falling back to static data')
+      return []
+    }
+  }
+
   const getImagesByCategory = (category: string): PortfolioImage[] => {
+    // For now, we'll keep the existing static data as fallback
+    // This will be replaced with dynamic CMS data once the API is set up
     switch (category) {
       case 'events':
         return [
@@ -317,6 +345,7 @@ export function usePortfolioImages() {
   }
 
   return {
-    getImagesByCategory
+    getImagesByCategory,
+    getPortfolioItems
   }
 }
