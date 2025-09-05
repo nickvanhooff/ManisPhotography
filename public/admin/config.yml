@@ -7,8 +7,8 @@ media_folder: "public/images" # Media files will be stored in the repo under pub
 public_folder: "/images" # The src attribute for uploaded media will begin with /images
 
 # Site URL (required for local_backend)
-site_url: manis-photography.vercel.app # Replace with your actual Vercel domain
-display_url: manis-photography.vercel.app # Replace with your actual Vercel domain
+site_url: https://manis-photography.vercel.app # Replace with your actual Vercel domain
+display_url: https://manis-photography.vercel.app # Replace with your actual Vercel domain
 
 # Local backend (optional) - enables local development
 local_backend: true
