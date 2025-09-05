@@ -8,7 +8,25 @@
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
+    <!-- Root element for Decap CMS -->
+    <div id="nc-root"></div>
+    
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <!-- Initialize CMS after DOM is ready -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // Small delay to ensure all scripts are loaded
+        setTimeout(function() {
+          if (window.CMS) {
+            console.log('Initializing Decap CMS...');
+            // CMS will auto-initialize with config.yml
+          } else {
+            console.error('Decap CMS not loaded');
+          }
+        }, 100);
+      });
+    </script>
   </body>
 </html>
