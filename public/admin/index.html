@@ -4,8 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
-    <!-- Include the script that enables Netlify Identity on this page. -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
     <!-- Specify the config file location -->
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url">
   </head>
@@ -22,7 +20,7 @@
         // Small delay to ensure all scripts are loaded
         setTimeout(function() {
           if (window.CMS) {
-            console.log('Initializing Decap CMS...');
+            console.log('Initializing Decap CMS with GitHub backend...');
             // CMS will auto-initialize with config.yml from the link tag
           } else {
             console.error('Decap CMS not loaded');
