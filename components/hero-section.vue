@@ -1,17 +1,15 @@
 <template>
   <section class="relative h-screen flex items-center justify-center overflow-hidden">
     <div class="absolute inset-0 z-0 bg-black/30">
-      <NuxtImg
+      <img
         src="/images/Branding/manisdefretes_sep(28).jpg"
         alt="Fotografie achtergrond"
         class="w-full h-full object-cover object-center"
         width="1468"
         height="1038"
-        format="webp"
         quality="60"
         loading="eager"
         preload
-        :placeholder="[50, 25, 75]"
         fetchpriority="high"
       />
     </div>
