@@ -1,27 +1,24 @@
 backend:
-  name: test-repo
-  branch: main
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
 
-media_folder: "public/images"
-public_folder: "/images"
-
-site_url: "https://manis-photography.vercel.app"
-display_url: "https://manis-photography.vercel.app"
-
-local_backend: true
-publish_mode: simple
+media_folder: public/images
+public_folder: /images
 
 collections:
-  - name: "portfolio"
-    label: "Portfolio"
-    folder: "content/portfolio"
+  - name: 'portfolio'
+    label: 'Portfolio'
+    folder: 'content/portfolio'
+    format: 'frontmatter'
     create: true
-    slug: "{{slug}}"
+    slug: '{{slug}}'
+    editor:
+      preview: false
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Category", name: "category", widget: "select", options: ["weddings", "events", "festivals", "family"]}
-      - {label: "Featured", name: "featured", widget: "boolean", default: false}
-      - {label: "Order", name: "order", widget: "number", default: 0}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "Alt Text", name: "alt", widget: "string"}
-      - {label: "Description", name: "description", widget: "text", required: false}
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Category', name: 'category', widget: 'select', options: ['weddings', 'events', 'festivals', 'family'] }
+      - { label: 'Featured', name: 'featured', widget: 'boolean', default: false }
+      - { label: 'Order', name: 'order', widget: 'number', default: 0 }
+      - { label: 'Image', name: 'image', widget: 'image' }
+      - { label: 'Alt Text', name: 'alt', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'text', required: false }
