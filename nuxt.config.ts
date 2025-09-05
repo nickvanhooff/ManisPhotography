@@ -1,3 +1,4 @@
+/// <reference types="@nuxt/image" />
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { defineNuxtConfig } from 'nuxt/config'
 
@@ -10,6 +11,7 @@ export default defineNuxtConfig({
     '@nuxt/image'
   ],
 
+  // @ts-expect-error provided by @nuxt/image module
   image: {
     quality: 60,
     format: ['avif', 'webp'],
@@ -75,7 +77,7 @@ export default defineNuxtConfig({
       rollupOptions: {
         output: {
           manualChunks: {
-            'vendor': ['vue', 'vue-router', 'pinia']
+            'vendor': ['vue', 'vue-router']
           }
         }
       }
