@@ -23,5 +23,11 @@
       "source": "/admin",
       "destination": "/admin/index.html"
     }
+  ],
+  "routes": [
+    {
+      "src": "/admin/config.yml",
+      "dest": "/admin/config.yml"
+    }
   ]
 }
