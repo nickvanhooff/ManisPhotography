@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: nickvanhooff/ManisPhotography
+  name: test-repo
   branch: main
 
 media_folder: public/images
