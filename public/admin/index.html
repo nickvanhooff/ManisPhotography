@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <div id="nc-root"></div>
@@ -11,7 +12,8 @@
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      // Initialize Decap CMS with test-repo backend for Vercel
+      // Initialize Decap CMS with embedded configuration
+      // This prevents the 404 error for config.yml
       CMS.init({
         config: {
           backend: {
@@ -44,6 +46,17 @@
           ]
         }
       });
+
+      // Only initialize Netlify Identity if not in local development
+      if (window.netlifyIdentity && window.location.hostname !== 'localhost') {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
     </script>
   </body>
 </html>

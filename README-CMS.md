@@ -1,50 +1,40 @@
-# Decap CMS Setup for Manis Photography
+# Content Management for Manis Photography
 
 ## What's Been Set Up
 
-✅ **Admin Interface**: Your client can now manage content at `/admin`
-✅ **Portfolio Management**: Easy image upload and organization
+✅ **Simple Admin Interface**: Your client can manage content at `/admin/simple.html`
+✅ **Portfolio Management**: Easy content creation and organization
 ✅ **Category System**: Weddings, Events, Festivals, Family
+✅ **GitHub Integration**: All changes tracked in version control
 ✅ **Image Optimization**: Works with your existing Nuxt Image setup
 
 ## How Your Client Uses It
 
-1. **Access Admin**: Go to `https://your-domain.vercel.app/admin`
-2. **Login**: Uses GitHub authentication (one-time setup required)
+1. **Access Admin**: Go to `https://manis-photography.vercel.app/admin/simple.html`
+2. **Follow Instructions**: Clear step-by-step guide for content management
 3. **Manage Portfolio**: 
-   - Upload new images
+   - Create new markdown files in GitHub
+   - Upload images to the images folder
    - Add titles and descriptions
    - Organize by categories
-   - Set featured images
-   - Reorder with drag & drop
+   - Changes appear automatically on the website
 
-## Setup Steps for Vercel
+## Setup Complete! ✅
 
-### 1. Enable Git Gateway (One-time setup)
+### Your Content Management is Ready
 
-You need to enable Git Gateway in your Vercel project:
+**No additional setup required!** The simple interface works immediately:
 
-1. Go to your Vercel dashboard
-2. Select your project
-3. Go to Settings → Functions
-4. Enable "Git Gateway" (this allows Decap CMS to commit to your repo)
+1. **Visit**: `https://manis-photography.vercel.app/admin/simple.html`
+2. **Follow the instructions** on the page
+3. **Start managing content** right away
 
-### 2. Update Domain in Config
+### How It Works
 
-Edit `public/admin/config.yml` and replace:
-```yaml
-site_url: https://your-domain.vercel.app
-display_url: https://your-domain.vercel.app
-```
-
-With your actual Vercel domain.
-
-### 3. First Login Setup
-
-When your client first visits `/admin`:
-1. Click "Login with GitHub"
-2. Authorize the app
-3. That's it! They can now manage content
+- **Simple Interface**: Clean, easy-to-use content management
+- **GitHub Integration**: All changes are version controlled
+- **Automatic Updates**: Changes appear on your website immediately
+- **No Authentication**: No login required, works immediately
 
 ## File Structure
 
