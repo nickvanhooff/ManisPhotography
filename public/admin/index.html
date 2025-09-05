@@ -10,57 +10,41 @@
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
     <script>
-      // Initialize Decap CMS with embedded configuration
-      CMS.init({
-        config: {
-          load_config_file: false,
-          config_file: null,
-          backend: {
-            name: 'git-gateway',
-            branch: 'main'
-          },
-          media_folder: 'public/images',
-          public_folder: '/images',
-          site_url: 'https://manis-photography.vercel.app',
-          display_url: 'https://manis-photography.vercel.app',
-          local_backend: true,
-          publish_mode: 'simple',
-          collections: [
-            {
-              name: 'portfolio',
-              label: 'Portfolio',
-              folder: 'content/portfolio',
-              create: true,
-              slug: '{{slug}}',
-              fields: [
-                {label: 'Title', name: 'title', widget: 'string'},
-                {label: 'Category', name: 'category', widget: 'select', options: ['weddings', 'events', 'festivals', 'family']},
-                {label: 'Featured', name: 'featured', widget: 'boolean', default: false},
-                {label: 'Order', name: 'order', widget: 'number', default: 0},
-                {label: 'Image', name: 'image', widget: 'image'},
-                {label: 'Alt Text', name: 'alt', widget: 'string'},
-                {label: 'Description', name: 'description', widget: 'text', required: false}
-              ]
-            },
-            {
-              name: 'galleries',
-              label: 'Galleries',
-              folder: 'content/galleries',
-              create: true,
-              slug: '{{slug}}',
-              fields: [
-                {label: 'Gallery Name', name: 'name', widget: 'string'},
-                {label: 'Category', name: 'category', widget: 'select', options: ['weddings', 'events', 'festivals', 'family']},
-                {label: 'Description', name: 'description', widget: 'text', required: false},
-                {label: 'Images', name: 'images', widget: 'list', fields: [
+      // Wait for CMS to load, then initialize with embedded configuration
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.CMS) {
+          CMS.init({
+            config: {
+              backend: {
+                name: 'git-gateway',
+                branch: 'main'
+              },
+              media_folder: 'public/images',
+              public_folder: '/images',
+              site_url: 'https://manis-photography.vercel.app',
+              display_url: 'https://manis-photography.vercel.app',
+              local_backend: true,
+              publish_mode: 'simple',
+              collections: [
+                {
+                  name: 'portfolio',
+                  label: 'Portfolio',
+                  folder: 'content/portfolio',
+                  create: true,
+                  slug: '{{slug}}',
+                  fields: [
+                    {label: 'Title', name: 'title', widget: 'string'},
+                    {label: 'Category', name: 'category', widget: 'select', options: ['weddings', 'events', 'festivals', 'family']},
+                    {label: 'Featured', name: 'featured', widget: 'boolean', default: false},
+                    {label: 'Order', name: 'order', widget: 'number', default: 0},
                     {label: 'Image', name: 'image', widget: 'image'},
                     {label: 'Alt Text', name: 'alt', widget: 'string'},
-                    {label: 'Title', name: 'title', widget: 'string'},
-                    {label: 'Order', name: 'order', widget: 'number', default: 0}
-                  ]}
+                    {label: 'Description', name: 'description', widget: 'text', required: false}
+                  ]
+                }
               ]
             }
-          ]
+          });
         }
       });
 
