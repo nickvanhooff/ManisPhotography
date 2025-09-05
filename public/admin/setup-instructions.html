@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub OAuth Setup Instructions</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .container {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      }
+      h1 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .step {
+        margin-bottom: 30px;
+        padding: 20px;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        background: #f8f9fa;
+      }
+      .step h2 {
+        color: #666;
+        margin-top: 0;
+      }
+      .code {
+        background: #f1f1f1;
+        padding: 10px;
+        border-radius: 4px;
+        font-family: monospace;
+        margin: 10px 0;
+      }
+      .important {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 15px 0;
+      }
+      .success {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        padding: 15px;
+        border-radius: 4px;
+        margin: 15px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔧 GitHub OAuth Setup for Decap CMS</h1>
+      
+      <div class="important">
+        <strong>⚠️ Important:</strong> You need to create a GitHub OAuth app to make the CMS authentication work properly.
+      </div>
+
+      <div class="step">
+        <h2>Step 1: Create GitHub OAuth App</h2>
+        <ol>
+          <li>Go to: <a href="https://github.com/settings/applications/new" target="_blank">https://github.com/settings/applications/new</a></li>
+          <li>Fill in the following details:</li>
+        </ol>
+        <div class="code">
+          Application name: Manis Photography CMS<br>
+          Homepage URL: https://manis-photography.vercel.app<br>
+          Authorization callback URL: https://manis-photography.vercel.app/admin/
+        </div>
+        <li>Click "Register application"</li>
+        <li>Copy the <strong>Client ID</strong> (you'll need this)</li>
+      </div>
+
+      <div class="step">
+        <h2>Step 2: Update Configuration</h2>
+        <p>Once you have the Client ID, you need to update the config.yml file:</p>
+        <div class="code">
+          backend:<br>
+          &nbsp;&nbsp;name: github<br>
+          &nbsp;&nbsp;repo: nickvanhooff/ManisPhotography<br>
+          &nbsp;&nbsp;branch: main<br>
+          &nbsp;&nbsp;base_url: https://api.github.com<br>
+          &nbsp;&nbsp;auth_type: pkce<br>
+          &nbsp;&nbsp;app_id: YOUR_CLIENT_ID_HERE
+        </div>
+      </div>
+
+      <div class="step">
+        <h2>Step 3: Test the CMS</h2>
+        <p>After updating the config:</p>
+        <ol>
+          <li>Go to: <a href="/admin">https://manis-photography.vercel.app/admin</a></li>
+          <li>Click "Login with GitHub"</li>
+          <li>Authorize the application</li>
+          <li>You should now have access to the CMS!</li>
+        </ol>
+      </div>
+
+      <div class="success">
+        <strong>✅ Alternative Solution:</strong><br>
+        If you prefer a simpler approach, use the <a href="/admin/simple.html">Simple Interface</a> which doesn't require OAuth setup and works immediately.
+      </div>
+    </div>
+  </body>
+</html>
