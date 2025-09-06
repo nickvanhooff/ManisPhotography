@@ -29,5 +29,23 @@
 </template>
 
 <script setup lang="ts">
-// No authentication needed for GitHub backend
+// Add Netlify Identity widget for Decap CMS authentication
+useHead({
+  script: [
+    { src: "https://identity.netlify.com/v1/netlify-identity-widget.js" },
+  ],
+});
+
+// Handle Netlify Identity redirects
+onMounted(() => {
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+});
 </script> 
