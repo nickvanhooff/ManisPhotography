@@ -2,7 +2,6 @@ backend:
   name: github
   repo: nickvanhooff/ManisPhotography
   branch: main
-  base_url: https://api.github.com
   auth_type: pkce
   app_id: Ov23liIyRGjzq5jj8bCd
 
