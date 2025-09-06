@@ -6,9 +6,12 @@ backend:
   auth_type: pkce
   app_id: Ov23liIyRGjzq5jj8bCd
   auth_endpoint: https://api.github.com/authorize
+  open_authoring: true
 
 media_folder: public/images
 public_folder: /images
+
+publish_mode: editorial_workflow
 
 collections:
   - name: 'portfolio'
