@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manager</title>
+</head>
+<body>
+    <div id="nc-root"></div>
+    
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <script>
+        // Clear any cached configurations
+        if (window.localStorage) {
+            window.localStorage.removeItem('netlify-cms-user');
+            window.localStorage.removeItem('netlify-cms-token');
+        }
+        
+        // Initialize CMS with embedded configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.CMS) {
+                console.log('Initializing CMS with embedded GitHub config...');
+                
+                window.CMS.init({
+                    config: {
+                        backend: {
+                            name: 'github',
+                            repo: 'nickvanhooff/ManisPhotography',
+                            branch: 'main',
+                            auth_type: 'pkce',
+                            app_id: 'Ov23liIyRGjzq5jj8bCd'
+                        },
+                        media_folder: 'public/images',
+                        public_folder: '/images',
+                        collections: [
+                            {
+                                name: 'portfolio',
+                                label: 'Portfolio',
+                                folder: 'content/portfolio',
+                                format: 'frontmatter',
+                                create: true,
+                                slug: '{{slug}}',
+                                editor: {
+                                    preview: false
+                                },
+                                fields: [
+                                    { label: 'Title', name: 'title', widget: 'string' },
+                                    { label: 'Category', name: 'category', widget: 'select', options: ['weddings', 'events', 'festivals', 'family'] },
+                                    { label: 'Featured', name: 'featured', widget: 'boolean', default: false },
+                                    { label: 'Order', name: 'order', widget: 'number', default: 0 },
+                                    { label: 'Image', name: 'image', widget: 'image' },
+                                    { label: 'Alt Text', name: 'alt', widget: 'string' },
+                                    { label: 'Description', name: 'description', widget: 'text', required: false }
+                                ]
+                            }
+                        ]
+                    },
+                    load_config_file: false
+                });
+            } else {
+                console.error('Decap CMS not loaded');
+            }
+        });
+    </script>
+</body>
+</html>
