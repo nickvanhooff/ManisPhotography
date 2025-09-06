@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>OAuth Test</title>
+</head>
+<body>
+    <h1>GitHub OAuth App Test</h1>
+    <p>This page helps test if your GitHub OAuth App is configured correctly.</p>
+    
+    <h2>Current Configuration:</h2>
+    <ul>
+        <li><strong>App ID:</strong> Ov23liIyRGjzq5jj8bCd</li>
+        <li><strong>Repository:</strong> nickvanhooff/ManisPhotography</li>
+        <li><strong>Expected Callback URL:</strong> https://manis-photography.vercel.app/admin/</li>
+    </ul>
+    
+    <h2>Required GitHub OAuth App Settings:</h2>
+    <ol>
+        <li>Go to: <a href="https://github.com/settings/applications" target="_blank">GitHub OAuth Apps</a></li>
+        <li>Find your app with ID: <code>Ov23liIyRGjzq5jj8bCd</code></li>
+        <li>Click "Edit" on your OAuth App</li>
+        <li>Set these values:
+            <ul>
+                <li><strong>Application name:</strong> Decap CMS (or any name)</li>
+                <li><strong>Homepage URL:</strong> <code>https://manis-photography.vercel.app</code></li>
+                <li><strong>Authorization callback URL:</strong> <code>https://manis-photography.vercel.app/admin/</code></li>
+            </ul>
+        </li>
+        <li>Click "Update application"</li>
+    </ol>
+    
+    <h2>Test OAuth Flow:</h2>
+    <button onclick="testOAuth()">Test OAuth Connection</button>
+    <div id="result"></div>
+    
+    <script>
+        function testOAuth() {
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '<p>Testing OAuth connection...</p>';
+            
+            // Test the OAuth flow
+            const authUrl = `https://api.github.com/authorize?client_id=Ov23liIyRGjzq5jj8bCd&redirect_uri=${encodeURIComponent('https://manis-photography.vercel.app/admin/')}&scope=repo&state=test`;
+            
+            resultDiv.innerHTML = `
+                <p><strong>OAuth URL:</strong></p>
+                <p><a href="${authUrl}" target="_blank">${authUrl}</a></p>
+                <p>Click the link above to test if the OAuth flow works.</p>
+                <p>If it redirects back to your admin page, the OAuth App is configured correctly.</p>
+            `;
+        }
+    </script>
+</body>
+</html>

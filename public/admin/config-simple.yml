@@ -1,0 +1,28 @@
+backend:
+  name: github
+  repo: nickvanhooff/ManisPhotography
+  branch: main
+  base_url: https://api.github.com
+  auth_type: pkce
+  app_id: Ov23liIyRGjzq5jj8bCd
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: 'portfolio'
+    label: 'Portfolio'
+    folder: 'content/portfolio'
+    format: 'frontmatter'
+    create: true
+    slug: '{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Category', name: 'category', widget: 'select', options: ['weddings', 'events', 'festivals', 'family'] }
+      - { label: 'Featured', name: 'featured', widget: 'boolean', default: false }
+      - { label: 'Order', name: 'order', widget: 'number', default: 0 }
+      - { label: 'Image', name: 'image', widget: 'image' }
+      - { label: 'Alt Text', name: 'alt', widget: 'string' }
+      - { label: 'Description', name: 'description', widget: 'text', required: false }
